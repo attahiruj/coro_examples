@@ -121,7 +121,7 @@ main(int argc, char **argv) {
 
    end_of_file = fscanf(fp_in, "%s", locomotion_parameter_filename); // read the locomotion parameter data  filename   
    if (end_of_file == EOF) {   
-	  printf("Fatal error: unable to read the locomotion parameter filename\n");
+     printf("Fatal error: unable to read the locomotion parameter filename\n");
       prompt_and_exit(1);
    }
    if (debug) printf("Locomotion parameter filename %s\n", locomotion_parameter_filename);
@@ -151,8 +151,8 @@ main(int argc, char **argv) {
    /* optional: find the minimum linear and angular velocities that produce a robot movement */
    /*           this function is called only when calibrating the software                   */
   
-   // findMinimumVelocities(pub, rate, max_linear_velocity, max_angular_velocity);
-
+   // findMinimumVelocities(pub, rate, locomotionParameterData.max_linear_velocity, locomotionParameterData.max_angular_velocity);
+   // exit(1);
 
    /* process each command in the input file */
    /* -------------------------------------- */
@@ -174,16 +174,16 @@ main(int argc, char **argv) {
       }
       else if (strcmp(command, "goto1")==0) {
 
-	 /* use the divide and conquer algorithm to drive the robot to the required pose */
-	
-	 goToPoseDQ(x, y, theta, locomotionParameterData, pub, rate);
+         /* use the divide and conquer algorithm to drive the robot to the required pose */
+   
+         goToPoseDQ(x, y, theta, locomotionParameterData, pub, rate);
 
       }
       else if (strcmp(command, "goto2")==0) {
 
-	 /* use the MIMO algorithm to drive the robot to the required position and then reorient the robot to the required pose */
-	
-	 goToPoseMIMO1(x, y, theta, locomotionParameterData, pub, rate);
+         /* use the MIMO algorithm to drive the robot to the required position and then reorient the robot to the required pose */
+   
+         goToPoseMIMO1(x, y, theta, locomotionParameterData, pub, rate);
 
       }
 

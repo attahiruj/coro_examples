@@ -255,7 +255,6 @@ void findMinimumVelocities(ros::Publisher pub, ros::Rate rate, float max_linear_
 
    min_linear_velocity += step; // use the last value that produced a change in either x or y
    
-   printf("Minimum linear velocity = %f\n", min_linear_velocity);
 
    
    min_angular_velocity = max_angular_velocity; // this is the maximum allowable angular velocity
@@ -281,6 +280,7 @@ void findMinimumVelocities(ros::Publisher pub, ros::Rate rate, float max_linear_
 
    min_angular_velocity += step; // use the last value that produced a change in either x or y
 
+   printf("Minimum linear velocity = %f\n", min_linear_velocity);
    printf("Minimum angular velocity = %f\n", min_angular_velocity);
 
 }
